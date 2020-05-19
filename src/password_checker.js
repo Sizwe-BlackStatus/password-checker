@@ -2,7 +2,7 @@ function passwordIsValid(password) {
   if (password === "") {
     throw new Error("password should exist");
   }
-  if (!/.{8,}/g.test(password)) {
+  if (!/.{9,}/g.test(password)) {
     throw new Error("password should be longer than 8 characters");
   }
   if (!password.match(/[A-Z]/g)) {
@@ -14,17 +14,21 @@ function passwordIsValid(password) {
   if (!password.match(/\d/g)) {
     throw new Error("password should have atleast one digit");
   }
-  if (!password.match(/.[,!,@,#,$,%,^,&,*,?,_,-,~,(,)]/g)) {
+  if (!password.match(/\W|_+/g)) {
     throw new Error("password should have atleast one special character");
   }
+  else{
+    return ("")
+  }
 }
+console.log(passwordIsValid("Covid-19***"))
 function passwordIsOk(password) {
   let conditionsMet = 0;
   const password_is_ok = false;
   if (password != "") {
     conditionsMet += 1;
   }
-  if (/.{8,}/g.test(password)) {
+  if (/.{9,}/g.test(password)) {
     conditionsMet += 1;
   }
   if (password.match(/[A-Z]/g)) {
@@ -36,10 +40,10 @@ function passwordIsOk(password) {
   if (password.match(/\d/g)) {
     conditionsMet += 1;
   }
-  if (password.match(/.[,!,@,#,$,%,^,&,*,?,_,-,~,(,)]/g)) {
+  if (password.match(/\W|_+/g)) {
     conditionsMet += 1;
   }
-  if (password == "" || /.{8,}/g.test(password) == false) {
+  if (password == "" || /.{9,}/g.test(password) == false) {
     return password_is_ok;
   }
   if (conditionsMet >= 3) {
@@ -49,4 +53,5 @@ function passwordIsOk(password) {
   }
   return conditionsMet;
 }
+console.log(passwordIsOk("Covid-19***"))
 module.exports = { passwordIsValid, passwordIsOk };

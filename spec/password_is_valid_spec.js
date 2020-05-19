@@ -12,22 +12,22 @@ describe("Password Validation", function () {
   });
   it("password should have a uppercase characters", function () {
     expect(function () {
-      passwordIsValid("covid19a");
+      passwordIsValid("covid19*a");
     }).toThrow(new Error("password should have uppercase"));
   });
   it("password should have lowercase characters", function () {
     expect(function () {
-      passwordIsValid("COVID19A");
+      passwordIsValid("COVID19*A");
     }).toThrow(new Error("password should have lowercase"));
   });
   it("password should have a digit", function () {
     expect(function () {
-      passwordIsValid("COVID-aA");
+      passwordIsValid("COVID-aaA");
     }).toThrow(new Error("password should have atleast one digit"));
   });
   it("password should have a special char", function () {
     expect(function () {
-      passwordIsValid("Covid-19");
+      passwordIsValid("Covid0199");
     }).toThrow(new Error("password should have atleast one special character"));
   });
 });
